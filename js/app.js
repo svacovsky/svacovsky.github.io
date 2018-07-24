@@ -8,12 +8,14 @@ let Enemy = function() {
     this.reset();
 };
 
+//https://stackoverflow.com/questions/19132637/selected-a-random-number-from-a-set
 function getRandomFromSet(set)
 {
     var rndm = Math.floor(Math.random() * set.length);
     return set[rndm];
 }
 
+// https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
