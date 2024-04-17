@@ -140,6 +140,7 @@ function handleTouchMove(evt) {
     if ( ! xDown || ! yDown ) {
         return;
     }
+    evt.preventDefault()
 
     var xUp = evt.touches[0].clientX;                                    
     var yUp = evt.touches[0].clientY;
@@ -150,18 +151,18 @@ function handleTouchMove(evt) {
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
         if ( xDiff > 0 ) {
             /* right swipe */ 
-            direction = 'right'
+            direction = 'left'
         } else {
             /* left swipe */
-            direction = 'left'
+            direction = 'right'
         }                       
     } else {
         if ( yDiff > 0 ) {
             /* down swipe */ 
-            direction = 'down'
+            direction = 'up'
         } else { 
             /* up swipe */
-            direction = 'up'
+            direction = 'down'
         }                                                                 
     }
     if(direction){
