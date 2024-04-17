@@ -119,8 +119,6 @@ console.log(player);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('touchstart', handleTouchStart, false);        
-document.addEventListener('touchmove', handleTouchMove, false);
 
 var xDown = null;                                                        
 var yDown = null;
@@ -174,6 +172,8 @@ function handleTouchMove(evt) {
     xDown = null;
     yDown = null;                                             
 };
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
