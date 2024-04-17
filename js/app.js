@@ -119,6 +119,58 @@ console.log(player);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;                                                        
+var yDown = null;
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+};                                                
+                                                                         
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+    var direction = ''
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            /* right swipe */ 
+            direction = 'right'
+        } else {
+            /* left swipe */
+            direction = 'left'
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            /* down swipe */ 
+            direction = 'down'
+        } else { 
+            /* up swipe */
+            direction = 'up'
+        }                                                                 
+    }
+    if(direction){
+      player.handleInput(direction);
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
