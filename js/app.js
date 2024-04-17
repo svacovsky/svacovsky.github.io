@@ -131,6 +131,8 @@ function getTouches(evt) {
 }                                                     
                                                                          
 function handleTouchStart(evt) {
+    console.log('Touch Start')
+    console.log(evt)
     const firstTouch = getTouches(evt)[0];                                      
     xDown = firstTouch.clientX;                                      
     yDown = firstTouch.clientY;                                      
@@ -165,6 +167,7 @@ function handleTouchMove(evt) {
         }                                                                 
     }
     if(direction){
+      console.log('I have direction!')
       player.handleInput(direction);
     }
     /* reset values */
